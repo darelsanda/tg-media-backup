@@ -14,10 +14,20 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: "3.24.5"
           channel: "stable"
+
+      - name: Accept Android Licenses
+        run: yes | flutter doctor --android-licenses || true
 
       - name: Install Flet & Build APK
         run: |
