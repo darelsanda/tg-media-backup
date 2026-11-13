@@ -2,7 +2,7 @@
 name = "tg-media-backup"
 version = "1.0.0"
 description = "Telegram Group Media Downloader"
-dependencies = ["flet==0.25.2", "telethon==1.37.0", "pyaes", "rsa"]
+dependencies = ["flet==0.25.2", "telethon==1.37.0", "rsa"]
 
 [tool.flet.android]
 screen_orientation = "portrait"
