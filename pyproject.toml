@@ -1,0 +1,14 @@
+[project]
+name = "tg-media-backup"
+version = "1.0.0"
+description = "Telegram Group Media Downloader"
+dependencies = ["flet==0.25.2", "telethon"]
+
+[tool.flet.android]
+screen_orientation = "portrait"
+permissions = [
+    "android.permission.INTERNET",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.MANAGE_EXTERNAL_STORAGE"
+]
