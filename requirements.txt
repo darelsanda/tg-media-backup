@@ -1,2 +1,4 @@
 flet==0.25.2
-telethon
+telethon==1.37.0
+pyaes
+rsa
