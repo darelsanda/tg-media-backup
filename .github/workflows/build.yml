@@ -29,10 +29,15 @@ jobs:
       - name: Accept Android Licenses
         run: yes | flutter doctor --android-licenses || true
 
+      - name: Bundle Pure-Python pyaes
+        run: |
+          pip download pyaes --no-binary=:none: -d /tmp/pyaes_dl || pip download pyaes -d /tmp/pyaes_dl
+          python -c "import tarfile, zipfile, glob, shutil, os; f=glob.glob('/tmp/pyaes_dl/*')[0]; (tarfile.open(f).extractall('/tmp/pyaes_ext') if f.endswith('gz') else zipfile.ZipFile(f).extractall('/tmp/pyaes_ext')); src=glob.glob('/tmp/pyaes_ext/**/pyaes', recursive=True)[0]; shutil.copytree(src, 'pyaes', dirs_exist_ok=True)"
+
       - name: Install Flet & Build APK
         run: |
           pip install flet==0.25.2
-          flet build apk --no-rich-output
+          flet build apk --no-rich-output --pip-options "--no-deps"
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
